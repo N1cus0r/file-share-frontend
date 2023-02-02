@@ -11,7 +11,6 @@ const FacebookLoginButton = ({ setLoading }) => {
 
   const responseFacebook = (response) => {
     socialLogin(response.accessToken, "facebook", response.email);
-    setLoading(false);
   };
 
   return (
