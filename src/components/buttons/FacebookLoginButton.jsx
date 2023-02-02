@@ -15,8 +15,10 @@ const FacebookLoginButton = () => {
 
   return (
     <FacebookLogin
-      fields="name,email,picture"
       appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+      fields="name,email,picture"
+      autoLoad={false}
+      disableMobileRedirect={true}
       callback={responseFacebook}
       render={(renderProps) => (
         <Button
