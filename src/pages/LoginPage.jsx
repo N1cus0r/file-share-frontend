@@ -81,10 +81,11 @@ const LoginPage = () => {
               password={password}
               errorMessage={errorMessage}
               message={message}
+              loading={loading}
+              setLoading={setLoading}
               setPassword={setPassword}
               setErrorMessage={setErrorMessage}
               handleFormSubmit={handleLoginFormSubmit}
-              loading={loading}
             />
           </TabPanel>
           <TabPanel value="register">
@@ -93,9 +94,10 @@ const LoginPage = () => {
               firstName={firstName}
               lastName={lastName}
               password={password}
+              errorMessage={errorMessage}
               message={message}
               loading={loading}
-              errorMessage={errorMessage}
+              setLoading={setLoading}
               setEmail={setEmail}
               setFirstName={setFirstName}
               setLastName={setLastName}

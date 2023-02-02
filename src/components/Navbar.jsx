@@ -12,7 +12,7 @@ import useTheme from "../hooks/useTheme";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { LocalStorageAPI } from "../utils/LocalStorageAPI";
-import UserIconButton from "./UserIconButton";
+import UserIconButton from "./buttons/UserIconButton";
 
 const Navbar = () => {
   const [user, setUser] = useState(LocalStorageAPI.getLocalStorageUser());
@@ -37,7 +37,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("storage", userChange);
     };
-  }, [user]);
+  }, []);
 
   return (
     <AppBar position="static">

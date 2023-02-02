@@ -20,6 +20,7 @@ const LoginForm = ({
   errorMessage,
   message,
   loading,
+  setLoading,
   setEmail,
   setPassword,
   setErrorMessage,
@@ -41,10 +42,10 @@ const LoginForm = ({
         </Grid>
       )}
       <Grid item>
-        <GoogleLoginButton />
+        <GoogleLoginButton setLoading={setLoading} />
       </Grid>
       <Grid item>
-        <FacebookLoginButton />
+        <FacebookLoginButton setLoading={setLoading} />
       </Grid>
       <Grid item>
         <Divider>

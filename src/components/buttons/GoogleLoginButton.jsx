@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import useAuth from "../../hooks/useAuth";
 import useTheme from "../../hooks/useTheme";
 
-const GoogleLoginButton = () => {
+const GoogleLoginButton = ({ setLoading }) => {
   const { socialLogin } = useAuth();
   const [mode, setColorMode] = useTheme();
 
@@ -32,16 +32,25 @@ const GoogleLoginButton = () => {
     <div id="signInButton">
       <GoogleLogin
         clientId={process.env.REACT_APP_GOOGLE_APP_ID}
-        render={(renderProps) => (
-          <Button
-            fullWidth
-            color={mode === "light" ? "black" : "white"}
-            startIcon={<FcGoogle fontSize="small" color="blue" />}
-            onClick={renderProps.onClick}
-          >
-            Continue With Google
-          </Button>
-        )}
+        render={(renderProps) => {
+          const sendRequest = renderProps.onClick;
+
+          const handleClick = () => {
+            setLoading(true);
+            sendRequest();
+          };
+
+          return (
+            <Button
+              fullWidth
+              color={mode === "light" ? "black" : "white"}
+              startIcon={<FcGoogle fontSize="small" color="blue" />}
+              onClick={handleClick}
+            >
+              Continue With Google
+            </Button>
+          );
+        }}
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}

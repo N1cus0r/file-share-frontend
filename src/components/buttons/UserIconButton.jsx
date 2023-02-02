@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const UserIconButton = ({
   user,
@@ -16,6 +16,11 @@ const UserIconButton = ({
   openUserMenu,
 }) => {
   const { logoutUser } = useAuth();
+
+  const handleClick = () => {
+    closeUserMenu();
+    logoutUser();
+  };
 
   return (
     <>
@@ -27,14 +32,14 @@ const UserIconButton = ({
         </IconButton>
       </Tooltip>
       <Menu
-        anchorEl={anchorElUser}
         keepMounted
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        transformOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorEl={anchorElUser}
         open={Boolean(anchorElUser)}
         onClose={closeUserMenu}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        transformOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <MenuItem onClick={logoutUser}>
+        <MenuItem onClick={handleClick}>
           <Typography textAlign="center">Logout</Typography>
         </MenuItem>
       </Menu>

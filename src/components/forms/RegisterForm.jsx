@@ -23,6 +23,7 @@ const RegisterForm = ({
   errorMessage,
   message,
   loading,
+  setLoading,
   setEmail,
   setFirstName,
   setLastName,
@@ -46,10 +47,10 @@ const RegisterForm = ({
         </Grid>
       )}
       <Grid item>
-        <GoogleLoginButton />
+        <GoogleLoginButton setLoading={setLoading} />
       </Grid>
       <Grid item>
-        <FacebookLoginButton />
+        <FacebookLoginButton setLoading={setLoading} />
       </Grid>
       <Grid item>
         <Divider>
