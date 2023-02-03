@@ -8,6 +8,7 @@ import DownloadPage from "../pages/DownloadPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
+import UserProfilePage from "../pages/UserProfilePage";
 import PrivateRoute from "./PrivateRoute";
 
 const AppRouter = () => {
@@ -33,6 +34,7 @@ const AppRouter = () => {
               path="password-reset-email"
               element={<ResetPasswordPage />}
             />
+            <Route path="profile" element={<UserProfilePage />} />
           </Route>
         </Routes>
       </AuthProvider>

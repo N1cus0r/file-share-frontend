@@ -13,8 +13,11 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { LocalStorageAPI } from "../utils/LocalStorageAPI";
 import UserIconButton from "./buttons/UserIconButton";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(LocalStorageAPI.getLocalStorageUser());
   const [mode, changeColorMode] = useTheme();
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -42,15 +45,24 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <IconButton size="large" color="inherit" edge="start">
+        <IconButton
+          size="large"
+          color="inherit"
+          edge="start"
+          onClick={() => navigate("/")}
+        >
           <CloudIcon />
         </IconButton>
         <Typography
           variant="h6"
           component="a"
-          href="/"
           noWrap
-          sx={{ color: "inherit", textDecoration: "none" }}
+          sx={{
+            color: "inherit",
+            textDecoration: "none",
+            fontFamily: "monospace",
+          }}
+          onClick={() => navigate("/")}
         >
           File Share
         </Typography>

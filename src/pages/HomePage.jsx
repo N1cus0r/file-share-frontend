@@ -43,9 +43,6 @@ const HomePage = () => {
       alignItems="center"
       display="flex"
     >
-      {/* <Grid item>
-        <Chips />
-      </Grid> */}
       <Grid item>
         {loading || result ? (
           <FileUploadResult loading={loading} file={file} result={result} />

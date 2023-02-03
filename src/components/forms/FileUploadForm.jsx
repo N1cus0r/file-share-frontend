@@ -59,7 +59,9 @@ const FileUploadForm = ({
               <FileUploadButton
                 uploadInputRef={uploadInputRef}
                 handleFileChange={handleFileChange}
-              />
+              >
+                Upload File
+              </FileUploadButton>
             )}
           </Grid>
           <Grid item>

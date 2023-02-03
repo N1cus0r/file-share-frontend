@@ -3,11 +3,15 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Stack,
   Tooltip,
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const UserIconButton = ({
   user,
@@ -16,10 +20,16 @@ const UserIconButton = ({
   openUserMenu,
 }) => {
   const { logoutUser } = useAuth();
+  const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleLogoutClick = () => {
     closeUserMenu();
     logoutUser();
+  };
+
+  const handleProfileClick = () => {
+    closeUserMenu();
+    navigate("profile");
   };
 
   return (
@@ -39,8 +49,17 @@ const UserIconButton = ({
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         transformOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <MenuItem onClick={handleClick}>
-          <Typography textAlign="center">Logout</Typography>
+        <MenuItem onClick={handleProfileClick}>
+          <Stack direction="row" spacing={1}>
+            <AccountCircleIcon />
+            <Typography textAlign="center">Profile</Typography>
+          </Stack>
+        </MenuItem>
+        <MenuItem onClick={handleLogoutClick}>
+          <Stack direction="row" spacing={1}>
+            <LogoutIcon />
+            <Typography textAlign="center">Logout</Typography>
+          </Stack>
         </MenuItem>
       </Menu>
     </>
