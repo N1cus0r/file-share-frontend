@@ -10,7 +10,7 @@ const UserProfilePage = () => {
   //inputs
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
-  const [picture, setPicture] = useState(user?.picture);
+  const [picture, setPicture] = useState(user.picture);
   const [pictureURL, setPictureURL] = useState(user?.picture);
   //helpers
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,9 @@ const UserProfilePage = () => {
     formData.append("uid", uid);
     formData.append("first_name", firstName);
     formData.append("last_name", lastName);
-    formData.append("picture", picture, picture.name);
+    if (pictureURL !== user.picture) {
+      formData.append("picture", picture, picture.name);
+    }
 
     await axiosPrivate
       .patch("users/edit-profile", formData, {
